@@ -33,4 +33,14 @@ class BookscraperPipeline:
             value = adapter.get(price_key)
             value = value.replace('£', '')
             adapter[price_key] = float(value)
+
+        ## Avilability --> extract number of books in stock
+        availability_string = adapter.get('availability')
+        split_string_array = availability_string.split('(')
+        if len(split_string_array) < 2:
+            adapter['availibility'] = 0
+        else: 
+            availability_array = split_string_array[1].split(' ')
+            adapter['availability'] = int(availability_array[0])
+            
         return item
