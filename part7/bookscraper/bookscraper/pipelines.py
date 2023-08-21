@@ -64,3 +64,5 @@ class BookscraperPipeline:
         elif stars_text_value == "five":
             adapter['stars'] = 5
         return item
+
+
